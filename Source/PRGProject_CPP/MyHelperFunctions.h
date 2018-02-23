@@ -13,8 +13,9 @@ UCLASS()
 class PRGPROJECT_CPP_API UMyHelperFunctions : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
-	
-	
+
+	UFUNCTION(BlueprintCallable, Category = "MyOwnBlueprintFuctionLibrary")
+	void UsefulFunction();
 	
 	
 };

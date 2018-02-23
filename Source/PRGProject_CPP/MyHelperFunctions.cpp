@@ -5,3 +5,7 @@
 
 
 
+void UMyHelperFunctions::UsefulFunction()
+{
+
+}
