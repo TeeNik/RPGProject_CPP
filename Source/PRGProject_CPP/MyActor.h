@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "PlayerStats.h"
 #include "MyActor.generated.h"
 
 UCLASS()
@@ -12,15 +13,12 @@ class PRGPROJECT_CPP_API AMyActor : public AActor
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
 	AMyActor();
-
 	virtual void BeginPlay() override;
-
-	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+
+	FPlayerStats PlayerStats;
 
 	UPROPERTY(EditAnywhere)
 	float Health;
