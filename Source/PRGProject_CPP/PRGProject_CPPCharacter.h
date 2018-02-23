@@ -4,12 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "PlayerHealth.h"
-#include "RPGProject_CPPCharacter.generated.h"
-
+#include "PRGProject_CPPCharacter.generated.h"
 
 UCLASS(config=Game)
-class ARPGProject_CPPCharacter : public ACharacter
+class APRGProject_CPPCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
@@ -21,7 +19,7 @@ class ARPGProject_CPPCharacter : public ACharacter
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* FollowCamera;
 public:
-	ARPGProject_CPPCharacter();
+	APRGProject_CPPCharacter();
 
 	/** Base turn rate, in deg/sec. Other scaling may affect final turn rate. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
@@ -30,9 +28,6 @@ public:
 	/** Base look up/down rate, in deg/sec. Other scaling may affect final rate. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
 	float BaseLookUpRate;
-
-	UPROPERTY(EditAnywhere)
-	PlayerHealth PlayerHealth;
 
 protected:
 

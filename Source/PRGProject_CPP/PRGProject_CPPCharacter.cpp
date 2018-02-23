@@ -1,6 +1,6 @@
 // Copyright 1998-2017 Epic Games, Inc. All Rights Reserved.
 
-#include "RPGProject_CPPCharacter.h"
+#include "PRGProject_CPPCharacter.h"
 #include "HeadMountedDisplayFunctionLibrary.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -10,9 +10,9 @@
 #include "GameFramework/SpringArmComponent.h"
 
 //////////////////////////////////////////////////////////////////////////
-// ARPGProject_CPPCharacter
+// APRGProject_CPPCharacter
 
-ARPGProject_CPPCharacter::ARPGProject_CPPCharacter()
+APRGProject_CPPCharacter::APRGProject_CPPCharacter()
 {
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
@@ -50,61 +50,61 @@ ARPGProject_CPPCharacter::ARPGProject_CPPCharacter()
 //////////////////////////////////////////////////////////////////////////
 // Input
 
-void ARPGProject_CPPCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
+void APRGProject_CPPCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
 {
 	// Set up gameplay key bindings
 	check(PlayerInputComponent);
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
 
-	PlayerInputComponent->BindAxis("MoveForward", this, &ARPGProject_CPPCharacter::MoveForward);
-	PlayerInputComponent->BindAxis("MoveRight", this, &ARPGProject_CPPCharacter::MoveRight);
+	PlayerInputComponent->BindAxis("MoveForward", this, &APRGProject_CPPCharacter::MoveForward);
+	PlayerInputComponent->BindAxis("MoveRight", this, &APRGProject_CPPCharacter::MoveRight);
 
 	// We have 2 versions of the rotation bindings to handle different kinds of devices differently
 	// "turn" handles devices that provide an absolute delta, such as a mouse.
 	// "turnrate" is for devices that we choose to treat as a rate of change, such as an analog joystick
 	PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
-	PlayerInputComponent->BindAxis("TurnRate", this, &ARPGProject_CPPCharacter::TurnAtRate);
+	PlayerInputComponent->BindAxis("TurnRate", this, &APRGProject_CPPCharacter::TurnAtRate);
 	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
-	PlayerInputComponent->BindAxis("LookUpRate", this, &ARPGProject_CPPCharacter::LookUpAtRate);
+	PlayerInputComponent->BindAxis("LookUpRate", this, &APRGProject_CPPCharacter::LookUpAtRate);
 
 	// handle touch devices
-	PlayerInputComponent->BindTouch(IE_Pressed, this, &ARPGProject_CPPCharacter::TouchStarted);
-	PlayerInputComponent->BindTouch(IE_Released, this, &ARPGProject_CPPCharacter::TouchStopped);
+	PlayerInputComponent->BindTouch(IE_Pressed, this, &APRGProject_CPPCharacter::TouchStarted);
+	PlayerInputComponent->BindTouch(IE_Released, this, &APRGProject_CPPCharacter::TouchStopped);
 
 	// VR headset functionality
-	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &ARPGProject_CPPCharacter::OnResetVR);
+	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &APRGProject_CPPCharacter::OnResetVR);
 }
 
 
-void ARPGProject_CPPCharacter::OnResetVR()
+void APRGProject_CPPCharacter::OnResetVR()
 {
 	UHeadMountedDisplayFunctionLibrary::ResetOrientationAndPosition();
 }
 
-void ARPGProject_CPPCharacter::TouchStarted(ETouchIndex::Type FingerIndex, FVector Location)
+void APRGProject_CPPCharacter::TouchStarted(ETouchIndex::Type FingerIndex, FVector Location)
 {
 		Jump();
 }
 
-void ARPGProject_CPPCharacter::TouchStopped(ETouchIndex::Type FingerIndex, FVector Location)
+void APRGProject_CPPCharacter::TouchStopped(ETouchIndex::Type FingerIndex, FVector Location)
 {
 		StopJumping();
 }
 
-void ARPGProject_CPPCharacter::TurnAtRate(float Rate)
+void APRGProject_CPPCharacter::TurnAtRate(float Rate)
 {
 	// calculate delta for this frame from the rate information
 	AddControllerYawInput(Rate * BaseTurnRate * GetWorld()->GetDeltaSeconds());
 }
 
-void ARPGProject_CPPCharacter::LookUpAtRate(float Rate)
+void APRGProject_CPPCharacter::LookUpAtRate(float Rate)
 {
 	// calculate delta for this frame from the rate information
 	AddControllerPitchInput(Rate * BaseLookUpRate * GetWorld()->GetDeltaSeconds());
 }
 
-void ARPGProject_CPPCharacter::MoveForward(float Value)
+void APRGProject_CPPCharacter::MoveForward(float Value)
 {
 	if ((Controller != NULL) && (Value != 0.0f))
 	{
@@ -118,7 +118,7 @@ void ARPGProject_CPPCharacter::MoveForward(float Value)
 	}
 }
 
-void ARPGProject_CPPCharacter::MoveRight(float Value)
+void APRGProject_CPPCharacter::MoveRight(float Value)
 {
 	if ( (Controller != NULL) && (Value != 0.0f) )
 	{

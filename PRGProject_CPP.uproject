@@ -5,7 +5,7 @@
 	"Description": "",
 	"Modules": [
 		{
-			"Name": "RPGProject_CPP",
+			"Name": "PRGProject_CPP",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
 		}

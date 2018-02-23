@@ -3,11 +3,11 @@
 using UnrealBuildTool;
 using System.Collections.Generic;
 
-public class RPGProject_CPPTarget : TargetRules
+public class PRGProject_CPPTarget : TargetRules
 {
-	public RPGProject_CPPTarget(TargetInfo Target) : base(Target)
+	public PRGProject_CPPTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Game;
-		ExtraModuleNames.Add("RPGProject_CPP");
+		ExtraModuleNames.Add("PRGProject_CPP");
 	}
 }
