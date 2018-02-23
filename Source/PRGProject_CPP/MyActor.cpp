@@ -16,6 +16,7 @@ void AMyActor::BeginPlay()
 {
 	Super::BeginPlay();
 	this->PrintOnScreen(1);
+	GLog->Log("Hello World!");
 }
 
 // Called every frame 
@@ -23,5 +24,11 @@ void AMyActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	
+}
+
+void AMyActor::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+	GLog->Log("Override endplay fuction");
+	Super::EndPlay(EndPlayReason);
 }
 
