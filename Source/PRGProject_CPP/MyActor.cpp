@@ -23,8 +23,29 @@ void AMyActor::BeginPlay()
 		GLog->Log("The Actor you chose is a static mesh actor");
 	}
 
-	FTimerHandle TimerHandle;
-	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AMyActor::DoAPeriodicCheck, LoopTime, true);
+	/*FTimerHandle TimerHandle;
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AMyActor::DoAPeriodicCheck, LoopTime, true);*/
+
+	TArray<FHitResult> HitResults;
+	FVector StartLocation = GetActorLocation();
+	FVector EndLocation = GetActorLocation();
+	EndLocation.Z += SphereHieght;
+
+	ECollisionChannel ECC = ECollisionChannel::ECC_WorldStatic;
+	FCollisionShape CollisionShape;
+	CollisionShape.ShapeType = ECollisionShape::Sphere;
+	CollisionShape.SetSphere(SphereRadius);
+
+	bool bHitSomething = GetWorld()->SweepMultiByChannel(HitResults, StartLocation, EndLocation, FQuat::FQuat(), ECC, CollisionShape);
+	if (bHitSomething) {
+		for (auto It = HitResults.CreateIterator(); It; It++) {
+			GLog->Log(It->Actor->GetName());
+		}
+	}
+
+	FVector CenterOfSphere = ((EndLocation - StartLocation) / 2) + StartLocation;
+	DrawDebugSphere(GetWorld(), CenterOfSphere, CollisionShape.GetSphereRadius(), Segments, FColor::Blue, true);
+
 }
 
 // Called every frame 

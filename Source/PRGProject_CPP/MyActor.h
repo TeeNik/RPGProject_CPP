@@ -33,5 +33,12 @@ public:
 
 	UPROPERTY(EditAnywhere)
 	float LoopTime;
+
+	UPROPERTY(EditAnywhere, Category="Sweep")
+	float SphereHieght = 200;
+	UPROPERTY(EditAnywhere, Category = "Sweep")
+	float SphereRadius = 500;
+	UPROPERTY(EditAnywhere, Category = "Sweep")
+	int32 Segments = 100;
 	
 };
