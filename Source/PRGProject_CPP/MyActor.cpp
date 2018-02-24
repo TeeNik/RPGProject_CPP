@@ -18,6 +18,10 @@ void AMyActor::BeginPlay()
 	this->PrintOnScreen(1);
 	GLog->Log("Hello World!");
 	PlayerStats.Health = 100;
+	AStaticMeshActor* StaticMesh = Cast<AStaticMeshActor>(SM);
+	if (StaticMesh) {
+		GLog->Log("The Actor you chose is a static mesh actor");
+	}
 }
 
 // Called every frame 

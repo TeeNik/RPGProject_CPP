@@ -7,6 +7,7 @@
 #include "Components/InputComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
+#include "Engine/StaticMeshActor.h"
 #include "GameFramework/SpringArmComponent.h"
 
 //////////////////////////////////////////////////////////////////////////
@@ -45,6 +46,8 @@ APRGProject_CPPCharacter::APRGProject_CPPCharacter()
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
+
+	
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -74,6 +77,10 @@ void APRGProject_CPPCharacter::SetupPlayerInputComponent(class UInputComponent* 
 
 	// VR headset functionality
 	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &APRGProject_CPPCharacter::OnResetVR);
+	AStaticMeshActor* StaticMesh = Cast<AStaticMeshActor>(SM);
+	if (StaticMesh) {
+		GLog->Log("The Actor you chose is a static mesh actor");
+	}
 }
 
 
