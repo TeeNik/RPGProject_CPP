@@ -46,6 +46,13 @@ void AMyActor::BeginPlay()
 	FVector CenterOfSphere = ((EndLocation - StartLocation) / 2) + StartLocation;
 	DrawDebugSphere(GetWorld(), CenterOfSphere, CollisionShape.GetSphereRadius(), Segments, FColor::Blue, true);
 
+	for (auto It = NearbyActors.CreateIterator(); It; It++) {
+		UStaticMeshComponent* SM = Cast<UStaticMeshComponent>((*It)->GetRootComponent());
+		if (SM) {
+			SM->AddRadialImpulse(GetActorLocation(), Radius, Strength, ERadialImpulseFalloff::RIF_Linear, true);
+		}
+	}
+
 }
 
 // Called every frame 

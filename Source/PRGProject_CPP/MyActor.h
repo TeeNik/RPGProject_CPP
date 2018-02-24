@@ -40,5 +40,14 @@ public:
 	float SphereRadius = 500;
 	UPROPERTY(EditAnywhere, Category = "Sweep")
 	int32 Segments = 100;
-	
+
+	UPROPERTY(EditAnywhere, Category = "Bomb")
+	float Radius;
+	UPROPERTY(EditAnywhere, Category = "Bomb")
+	float Strength;
+	UPROPERTY(EditAnywhere, Category = "Bomb")
+	TArray<AActor*> NearbyActors;
+
+
+
 };
