@@ -77,10 +77,6 @@ void APRGProject_CPPCharacter::SetupPlayerInputComponent(class UInputComponent* 
 
 	// VR headset functionality
 	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &APRGProject_CPPCharacter::OnResetVR);
-	AStaticMeshActor* StaticMesh = Cast<AStaticMeshActor>(SM);
-	if (StaticMesh) {
-		GLog->Log("The Actor you chose is a static mesh actor");
-	}
 }
 
 

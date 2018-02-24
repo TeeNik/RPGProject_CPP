@@ -22,6 +22,9 @@ void AMyActor::BeginPlay()
 	if (StaticMesh) {
 		GLog->Log("The Actor you chose is a static mesh actor");
 	}
+
+	FTimerHandle TimerHandle;
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AMyActor::DoAPeriodicCheck, LoopTime, true);
 }
 
 // Called every frame 
@@ -35,5 +38,10 @@ void AMyActor::EndPlay(const EEndPlayReason::Type EndPlayReason)
 	GLog->Log("Override endplay fuction");
 	GLog->Log("PlayerStats.Health: " + FString::FromInt(PlayerStats.Health));
 	Super::EndPlay(EndPlayReason);
+}
+
+void AMyActor::DoAPeriodicCheck()
+{
+	GLog->Log("Fire!!!");
 }
 

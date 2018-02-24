@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "PlayerStats.h"
-#include "Engine/StaticMeshActor.h"
 #include "MyActor.generated.h"
 
 UCLASS()
@@ -28,6 +27,11 @@ public:
 	void PrintOnScreen(int32 IntToPrint);
 	
 	UPROPERTY(EditAnywhere)
-	AStaticMeshActor* SM;
+	AActor* SM;
+
+	void DoAPeriodicCheck();
+
+	UPROPERTY(EditAnywhere)
+	float LoopTime;
 	
 };
