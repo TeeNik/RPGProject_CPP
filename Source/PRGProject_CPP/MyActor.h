@@ -5,7 +5,9 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "PlayerStats.h"
+#include "Engine/DataTable.h"
 #include "MyActor.generated.h"
+
 
 UCLASS()
 class PRGPROJECT_CPP_API AMyActor : public AActor
@@ -47,6 +49,9 @@ public:
 	float Strength;
 	UPROPERTY(EditAnywhere, Category = "Bomb")
 	TArray<AActor*> NearbyActors;
+
+	UPROPERTY(EditAnywhere)
+	UDataTable* DataTable;
 
 
 

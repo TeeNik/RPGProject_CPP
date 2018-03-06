@@ -53,6 +53,12 @@ void AMyActor::BeginPlay()
 		}
 	}
 
+	FPlayerStats* Row = DataTable->FindRow<FPlayerStats>(TEXT("1"), TEXT(""));
+	if (Row) {
+		FString output = FString::FromInt((*Row).XpToLevel);
+		GLog->Log(output);
+	}
+
 }
 
 // Called every frame 
