@@ -17,14 +17,6 @@ class PRGPROJECT_CPP_API AMyTriggerBox : public ATriggerBox
 	/*Overriding the BeginPlay function*/
 	virtual void BeginPlay() override;
 
-	/*This function is called when an Actor enters the Trigger - PRE 4.12 version*/
-	UFUNCTION()
-	void OnTriggerEnter(AActor* Other);
-
-	/*This function is called when an Actor exits the Trigger - PRE 4.12 version*/
-	UFUNCTION()
-	void OnTriggerExit(AActor* Other);
-
 	/*This function is called when an Actor enters the Trigger - 4.12 version*/
 	UFUNCTION()
 	void OnTriggerEnter(AActor* OverlapedActor, AActor* OtherActor);
@@ -32,5 +24,6 @@ class PRGPROJECT_CPP_API AMyTriggerBox : public ATriggerBox
 	/*This function is called when an Actor exits the Trigger - 4.12 version*/
 	UFUNCTION()
 	void OnTriggerExit(AActor* OverlapedActor, AActor* OtherActor);
-	
+
+
 };
