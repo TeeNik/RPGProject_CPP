@@ -22,6 +22,7 @@ void AMyActor::BeginPlay()
 	if (StaticMesh) {
 		GLog->Log("The Actor you chose is a static mesh actor");
 	}
+	//code
 
 	/*FTimerHandle TimerHandle;
 	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AMyActor::DoAPeriodicCheck, LoopTime, true);*/
