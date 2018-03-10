@@ -18,12 +18,15 @@ public:
 	void TakeDamage(float value);
 	bool TakeMana(float value);
 
+	UPROPERTY(EditAnywhere)
+	float Health;
+	float Mana;
+
 protected:
 	virtual void BeginPlay() override;
 		
 private:
-	float Health;
-	float Mana;
+	
 
 	void Dead();
 	

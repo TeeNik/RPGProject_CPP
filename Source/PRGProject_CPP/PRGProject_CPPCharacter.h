@@ -36,6 +36,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Physics")
 	void MoveChosenActor();
 
+	UFUNCTION(BlueprintCallable)
+	void SpawnProjectile();
+
 protected:
 
 	/** Resets HMD orientation in VR. */
