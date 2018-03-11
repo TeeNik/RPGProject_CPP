@@ -8,6 +8,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
 #include "Engine/StaticMeshActor.h"
+#include "ResourceManager.h"
 #include "GameFramework/SpringArmComponent.h"
 
 //////////////////////////////////////////////////////////////////////////
@@ -146,4 +147,9 @@ void APRGProject_CPPCharacter::MoveChosenActor()
 	else {
 		GLog->Log("Root component is not a static mesh!");
 	}
+}
+
+void APRGProject_CPPCharacter::SpawnProjectile()
+{
+	auto a = UResourceManager::GetInstance().Fireball;
 }

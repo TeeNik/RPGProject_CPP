@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "PRGProject_CPPCharacter.generated.h"
 
+
 UCLASS(config=Game)
 class APRGProject_CPPCharacter : public ACharacter
 {
