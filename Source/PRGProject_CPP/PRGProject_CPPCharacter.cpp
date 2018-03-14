@@ -8,7 +8,6 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
 #include "Engine/StaticMeshActor.h"
-#include "ResourceManager.h"
 #include "GameFramework/SpringArmComponent.h"
 
 //////////////////////////////////////////////////////////////////////////
@@ -151,5 +150,5 @@ void APRGProject_CPPCharacter::MoveChosenActor()
 
 void APRGProject_CPPCharacter::SpawnProjectile()
 {
-	auto a = UResourceManager::GetInstance().Fireball;
+	//auto a = UResourceManager::GetInstance().Fireball;
 }

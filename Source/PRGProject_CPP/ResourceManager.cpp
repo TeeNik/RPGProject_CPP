@@ -2,18 +2,10 @@
 
 #include "ResourceManager.h"
 
+UResourceManager::UResourceManager(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 
-// Sets default values for this component's properties
-UResourceManager::UResourceManager()
-{
-	PrimaryComponentTick.bCanEverTick = false;
-	
 }
 
-// Called when the game starts
-void UResourceManager::BeginPlay()
-{
-	Super::BeginPlay();
-}
+
 
 

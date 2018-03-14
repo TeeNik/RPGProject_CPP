@@ -3,32 +3,23 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Components/SceneComponent.h"
+#include "UObject/NoExportTypes.h"
 #include "ResourceManager.generated.h"
 
-
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class PRGPROJECT_CPP_API UResourceManager : public USceneComponent
+/**
+ * 
+ */
+UCLASS(Blueprintable)
+class PRGPROJECT_CPP_API UResourceManager : public UObject
 {
 	GENERATED_BODY()
+	
+	public:
+		UResourceManager(const FObjectInitializer& ObjectInitializer);
 
-public:	
-	UResourceManager();
-	/*UResourceManager(const UResourceManager&);
-	UResourceManager& operator=(UResourceManager&);*/
-
-	static UResourceManager& GetInstance() {
-		static UResourceManager instance;
-		return instance;
-	}
-
-	UPROPERTY(EditDefaultsOnly, Category = "Projectiles")
+		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Projectiles")
 		TSubclassOf<AActor> Fireball;
-
-protected:
-	// Called when the game starts
-	virtual void BeginPlay() override;
-
-		
+	
+	
 	
 };
