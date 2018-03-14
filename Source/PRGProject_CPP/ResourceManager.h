@@ -17,14 +17,6 @@ class PRGPROJECT_CPP_API UResourceManager : public UObject
 	public:
 		UResourceManager(const FObjectInitializer& ObjectInitializer);
 
-		static UResourceManager Instance;
-
 		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Projectiles")
 		TSubclassOf<AActor> Fireball;
-
-		static UResourceManager* GetInstance();
-
-		static TSubclassOf<AActor> GetFireball();	
-	
-	
 };
