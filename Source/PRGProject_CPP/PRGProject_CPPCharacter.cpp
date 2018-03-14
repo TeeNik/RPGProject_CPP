@@ -8,6 +8,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
 #include "Engine/StaticMeshActor.h"
+#include "ResourceManager.h"
 #include "GameFramework/SpringArmComponent.h"
 
 //////////////////////////////////////////////////////////////////////////
@@ -150,5 +151,11 @@ void APRGProject_CPPCharacter::MoveChosenActor()
 
 void APRGProject_CPPCharacter::SpawnProjectile()
 {
+	if (UResourceManager::GetFireball() == NULL) {
+		GLog->Log("NULL");
+	}
+	else {
+		GLog->Log("Not Null");
+	}
 	//auto a = UResourceManager::GetInstance().Fireball;
 }
