@@ -170,15 +170,25 @@ void APRGProject_CPPCharacter::SpawnProjectile()
 	GetWorld()->LineTraceSingleByChannel(OutHit, start, end, ECC_Visibility, CollisionParams);
 
 	DrawDebugLine(GetWorld(), start, end, FColor::Green, false, 1, 0, 5);
-	bool isHit = ActorLineTraceSingle(OutHit, start, end, ECC_WorldStatic, CollisionParams);
+	//bool isHit = ActorLineTraceSingle(OutHit, start, end, ECC_WorldStatic, CollisionParams);
+	bool isHit = GetWorld()->LineTraceSingleByChannel(OutHit, start, end, ECC_Visibility, CollisionParams);
+
+	
+
+	FTransform transform;
+	
+	FVector hand = GetMesh()->GetSocketLocation("RightHand");
+	
+	transform.SetLocation(hand);
+	transform.SetRotation(UKismetMathLibrary::FindLookAtRotation(hand, OutHit.Location).Quaternion());
+	transform.SetScale3D(FVector::OneVector);
 
 	if (isHit) {
 		if (GEngine) {
 			GEngine->AddOnScreenDebugMessage(-1, 1, FColor::Red, FString::Printf(TEXT("The Comp being hit is %s"), *OutHit.GetComponent()->GetName()));
+			GetWorld()->SpawnActor<AActor>(UResourceManagerLibrary::GetResourceManagerData(t)->Fireball, hand, UKismetMathLibrary::FindLookAtRotation(hand, OutHit.Location));
 		}
 	}
-
-	FVector hand = GetMesh()->GetSocketLocation("RightHand");
 
 	/*DrawDebugLine(
 		GetWorld(),
