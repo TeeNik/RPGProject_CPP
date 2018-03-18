@@ -9,7 +9,10 @@
 #include "GameFramework/Controller.h"
 #include "Engine/StaticMeshActor.h"
 #include "ResourceManagerLibrary.h"
+#include "Kismet/KismetMathLibrary.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "DrawDebugHelpers.h"
+#include "Engine.h"
 
 //////////////////////////////////////////////////////////////////////////
 // APRGProject_CPPCharacter
@@ -158,5 +161,33 @@ void APRGProject_CPPCharacter::SpawnProjectile()
 	else {
 		GLog->Log("Not Null");
 	}
+
+	FHitResult OutHit(ForceInit);
+	FCollisionQueryParams CollisionParams;
+	FVector start = FollowCamera->GetSocketLocation("IsNone");
+	FVector end = UKismetMathLibrary::GetForwardVector(FollowCamera->GetComponentRotation()) * 50000 + FollowCamera->GetSocketLocation("IsNone");
+
+	GetWorld()->LineTraceSingleByChannel(OutHit, start, end, ECC_Visibility, CollisionParams);
+
+	DrawDebugLine(GetWorld(), start, end, FColor::Green, false, 1, 0, 5);
+	bool isHit = ActorLineTraceSingle(OutHit, start, end, ECC_WorldStatic, CollisionParams);
+
+	if (isHit) {
+		if (GEngine) {
+			GEngine->AddOnScreenDebugMessage(-1, 1, FColor::Red, FString::Printf(TEXT("The Comp being hit is %s"), *OutHit.GetComponent()->GetName()));
+		}
+	}
+
+	FVector hand = GetMesh()->GetSocketLocation("RightHand");
+
+	/*DrawDebugLine(
+		GetWorld(),
+		traceStart,
+		hit.Location,
+		FColor(255, 0, 0),
+		false, -1, 0,
+		12.333
+	);*/
+	
 	//auto a = UResourceManager::GetInstance().Fireball;
 }
