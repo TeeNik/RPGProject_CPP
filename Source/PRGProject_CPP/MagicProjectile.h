@@ -26,6 +26,7 @@ public:
 	UFUNCTION()
 	void OnTriggerEnter(AActor* OverlapedActor, AActor* OtherActor);
 
-	
+	UPROPERTY(EditAnywhere)
+	float Damage;
 	
 };
