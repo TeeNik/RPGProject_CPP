@@ -19,7 +19,7 @@ public:
 	UResourceManagerLibrary(const FObjectInitializer& ObjectInitializer);
 
 	UFUNCTION(BlueprintPure, Category = "Resoure Manager Singletone")
-	static UResourceManager* GetResourceManagerData(bool& IsValid);
+	static UResourceManager* GetResourceManagerData();
 	
 	
 };

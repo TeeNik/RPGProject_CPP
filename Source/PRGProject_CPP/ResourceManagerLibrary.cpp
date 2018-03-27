@@ -7,14 +7,11 @@ UResourceManagerLibrary::UResourceManagerLibrary(const FObjectInitializer& Objec
 
 }
 
-UResourceManager * UResourceManagerLibrary::GetResourceManagerData(bool & IsValid)
+UResourceManager * UResourceManagerLibrary::GetResourceManagerData()
 {
-	IsValid = false;
 	UResourceManager* Instance = Cast<UResourceManager>(GEngine->GameSingleton);
 
 	if (!Instance) return NULL;
 	if (!Instance->IsValidLowLevel()) return NULL;
-
-	IsValid = true;
 	return Instance;
 }

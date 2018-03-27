@@ -23,6 +23,10 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	
+	UFUNCTION()
+	void OnTriggerEnter(AActor* OverlapedActor, AActor* OtherActor);
+
+	UPROPERTY(EditAnywhere)
+	float Damage;
 	
 };

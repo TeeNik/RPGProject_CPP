@@ -15,6 +15,7 @@ AMagicProjectile::AMagicProjectile()
 void AMagicProjectile::BeginPlay()
 {
 	Super::BeginPlay();
+	OnActorBeginOverlap.AddDynamic(this, &AMagicProjectile::OnTriggerEnter);
 	
 }
 
@@ -23,5 +24,14 @@ void AMagicProjectile::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+void AMagicProjectile::OnTriggerEnter(AActor* OverlapedActor, AActor* OtherActor)
+{
+	if(!OtherActor->ActorHasTag("Player"))
+	{
+		Destroy();
+		GLog->Log("BAM");
+	}
 }
 
