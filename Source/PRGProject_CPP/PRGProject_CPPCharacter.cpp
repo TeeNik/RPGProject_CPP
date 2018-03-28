@@ -140,18 +140,6 @@ void APRGProject_CPPCharacter::MoveRight(float Value)
 	}
 }
 
-void APRGProject_CPPCharacter::MoveChosenActor()
-{
-	UStaticMeshComponent* SM = Cast<UStaticMeshComponent>(ActorToMove->GetRootComponent());
-	if (SM) {
-		GLog->Log("Force");
-		SM->AddForce(ForceToAdd*SM->GetMass());
-	}
-	else {
-		GLog->Log("Root component is not a static mesh!");
-	}
-}
-
 void APRGProject_CPPCharacter::SpawnProjectile()
 {
 	FHitResult OutHit(ForceInit);
