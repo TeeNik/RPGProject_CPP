@@ -30,13 +30,6 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
 	float BaseLookUpRate;
 
-	UPROPERTY(EditAnywhere, Category = "Physics")
-	AActor* ActorToMove;
-	UPROPERTY(EditAnywhere, Category = "Physics")
-	FVector ForceToAdd = FVector(0, 0, 5000);
-	UFUNCTION(BlueprintCallable, Category = "Physics")
-	void MoveChosenActor();
-
 	UFUNCTION(BlueprintCallable)
 	void SpawnProjectile();
 
