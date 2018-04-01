@@ -14,6 +14,7 @@ class PRGPROJECT_CPP_API UPlayerHealth : public UActorComponent
 public:	
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	UPlayerHealth();
+	~UPlayerHealth();
 	void TakeDamage(float value);
 	bool TakeMana(float value);
 
@@ -27,6 +28,8 @@ protected:
 		
 private:
 	
+	void RegenHealth();
+	void RegenMana();
 
 	void Dead();
 	
