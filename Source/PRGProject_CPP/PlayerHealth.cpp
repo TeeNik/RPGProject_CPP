@@ -38,9 +38,6 @@ void UPlayerHealth::BeginPlay()
 	SetupTimer(FName("RegenHealth"));
 }
 
-
-
-
 void UPlayerHealth::Dead()
 {
 	DestroyComponent();
