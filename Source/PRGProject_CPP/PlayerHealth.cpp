@@ -1,14 +1,18 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #include "PlayerHealth.h"
+#include "TimerManager.h"
 
 
-// Sets default values for this component's properties
 UPlayerHealth::UPlayerHealth()
 {
-	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
-	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
+
+	
+
+}
+
+UPlayerHealth::~UPlayerHealth()
+{
+	GLog->Log("Destructor");
 }
 
 void UPlayerHealth::TakeDamage(float value)
@@ -26,13 +30,12 @@ bool UPlayerHealth::TakeMana(float value)
 }
 
 
-// Called when the game starts
 void UPlayerHealth::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// ...
-	
+	SetupTimer(FName("RegenMana"));
+	SetupTimer(FName("RegenHealth"));
 }
 
 void UPlayerHealth::Dead()
@@ -41,12 +44,26 @@ void UPlayerHealth::Dead()
 	GLog->Log("Destroy");
 }
 
-
-// Called every frame
 void UPlayerHealth::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+}
 
-	// ...
+void UPlayerHealth::RegenMana()
+{
+	Health = (Health + 1) % MaxHealth;
+}
+
+void UPlayerHealth::RegenHealth()
+{
+	Mana = (Mana + 1) % MaxMana;
+}
+
+void UPlayerHealth::SetupTimer(FName name)
+{
+	FTimerDelegate TimerDel;
+	FTimerHandle TimerHandle;
+	TimerDel.BindUFunction(this, FName(name));
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle, TimerDel, 1, true);
 }
 

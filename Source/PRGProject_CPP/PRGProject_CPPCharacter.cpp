@@ -8,7 +8,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
 #include "Engine/StaticMeshActor.h"
-#include "ResourceManagerLibrary.h"
+#include "System/ResourceManagerLibrary.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "DrawDebugHelpers.h"
@@ -51,6 +51,8 @@ APRGProject_CPPCharacter::APRGProject_CPPCharacter()
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
 
+	FightController = CreateDefaultSubobject<UFightController>(TEXT("FightController"));
+	AddOwnedComponent(FightController);
 	
 }
 
@@ -137,18 +139,6 @@ void APRGProject_CPPCharacter::MoveRight(float Value)
 		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 		// add movement in that direction
 		AddMovementInput(Direction, Value);
-	}
-}
-
-void APRGProject_CPPCharacter::MoveChosenActor()
-{
-	UStaticMeshComponent* SM = Cast<UStaticMeshComponent>(ActorToMove->GetRootComponent());
-	if (SM) {
-		GLog->Log("Force");
-		SM->AddForce(ForceToAdd*SM->GetMass());
-	}
-	else {
-		GLog->Log("Root component is not a static mesh!");
 	}
 }
 
