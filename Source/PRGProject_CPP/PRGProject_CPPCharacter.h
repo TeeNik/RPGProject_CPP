@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Player/FightController.h"
 #include "PRGProject_CPPCharacter.generated.h"
 
 
@@ -32,6 +33,9 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void SpawnProjectile();
+
+	UPROPERTY()
+	UFightController* FightController;
 
 protected:
 
