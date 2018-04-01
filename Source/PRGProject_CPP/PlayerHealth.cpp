@@ -6,11 +6,7 @@ UPlayerHealth::UPlayerHealth()
 {
 	PrimaryComponentTick.bCanEverTick = true;
 
-	/*FTimerDelegate TimerDel;
-	FTimerHandle TimerHandle;
-
-	TimerDel.BindUFunction(this, FName("RegenMana"));
-	GetWorld()->GetTimerManager().SetTimer(TimerHandle, TimerDel, 0, true);*/
+	
 
 }
 
@@ -37,6 +33,17 @@ bool UPlayerHealth::TakeMana(float value)
 void UPlayerHealth::BeginPlay()
 {
 	Super::BeginPlay();
+	FTimerDelegate TimerDel;
+	FTimerHandle TimerHandle;
+
+	//GLog->Log(FString::FromInt(Mana));
+	GLog->Log("Begin Play");
+	TimerDel.BindUFunction(this, FName("RegenMana"));
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle, TimerDel, 1, true);
+}
+
+void UPlayerHealth::RegenHealth()
+{
 }
 
 void UPlayerHealth::Dead()

@@ -28,8 +28,8 @@ protected:
 		
 private:
 	
-	void RegenHealth();
-	void RegenMana();
+	UFUNCTION()	void RegenHealth();
+	UFUNCTION()	void RegenMana();
 
 	void Dead();
 	
