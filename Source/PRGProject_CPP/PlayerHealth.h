@@ -18,18 +18,20 @@ public:
 	void TakeDamage(float value);
 	bool TakeMana(float value);
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere) float MaxHealth;
-	UPROPERTY(BlueprintReadWrite, EditAnywhere) float MaxMana;
-	UPROPERTY(BlueprintReadWrite, EditAnywhere) float Health;
-	UPROPERTY(BlueprintReadWrite, EditAnywhere) float Mana;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere) int MaxHealth;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere) int MaxMana;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere) int Health;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere) int Mana;
 
 protected:
 	virtual void BeginPlay() override;
 		
 private:
+
+	void SetupTimer(FName name);
 	
-	void RegenHealth();
-	void RegenMana();
+	UFUNCTION()	void RegenHealth();
+	UFUNCTION()	void RegenMana();
 
 	void Dead();
 	
