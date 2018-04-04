@@ -51,12 +51,16 @@ void UPlayerHealth::TickComponent(float DeltaTime, ELevelTick TickType, FActorCo
 
 void UPlayerHealth::RegenMana()
 {
-	Health = (Health + 1) % MaxHealth;
+	if (Mana == MaxMana) return;
+	Mana++;
+	if (Mana > MaxMana) Mana = MaxMana;
 }
 
 void UPlayerHealth::RegenHealth()
 {
-	Mana = (Mana + 1) % MaxMana;
+	if (Health == MaxHealth) return;
+	Health++;
+	if (Health > MaxHealth) Health = MaxHealth;
 }
 
 void UPlayerHealth::SetupTimer(FName name)
